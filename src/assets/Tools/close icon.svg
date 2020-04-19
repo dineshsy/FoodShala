@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22.628" height="22.628" viewBox="0 0 22.628 22.628">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="22.628" height="22.628" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Error_Icon" data-name="Error Icon" d="M7,15V9H1A1,1,0,1,1,1,7H7V1A1,1,0,1,1,9,1V7h6a1,1,0,0,1,0,2H9v6a1,1,0,1,1-2,0Z" transform="translate(12.177 0.863) rotate(45)" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <rect width="24" height="24" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="close_icon" data-name="close icon" transform="translate(0 0)" clip-path="url(#clip-path)">
+    <path id="Error_Icon-2" data-name="Error Icon" d="M7,15V9H1A1,1,0,1,1,1,7H7V1A1,1,0,1,1,9,1V7h6a1,1,0,0,1,0,2H9v6a1,1,0,1,1-2,0Z" transform="translate(11.314 0) rotate(45)" fill="none"/>
+    <g transform="translate(-0.863 -0.863)" clip-path="url(#clip-path-2)">
+      <g id="_Color" data-name="🎨  Color" clip-path="url(#clip-path-3)">
+        <rect id="Rectangle" width="24" height="24" fill="#10299c"/>
+      </g>
+    </g>
+  </g>
+</svg>

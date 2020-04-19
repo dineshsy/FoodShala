@@ -1,0 +1,72 @@
+.cont-flip {
+    /* position: absolute; */
+    transition: transform 0.4s;
+    transform-style: preserve-3d;
+    height: 100%;
+    width: 80%;
+    margin: auto;
+}
+
+.cont-flip .front,
+.cont-flip .back {
+    display: block;
+    margin: 0;
+    height: auto;
+    position: absolute;
+    width: 100%;
+    backface-visibility: hidden;
+}
+
+.cont-flip .back {
+    border-radius: .8rem;
+    min-height: fit-content;
+    opacity: 1;
+    background-color: #fff;
+    transform: rotateX(180deg);
+}
+
+.cont-flip.flipped {
+    transform: rotateX(180deg);
+    animation: fadeout .3s ease;
+}
+
+.close {
+    display: block;
+    height: 5rem;
+    width: 5rem;
+    cursor: pointer;
+    background-image: url("../../../assets/Tools/close icon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    right: 0%;
+}
+
+@media (min-width:700px) {
+    .cont-flip {
+        width: 50%;
+    }
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+        transform: scale(.4);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

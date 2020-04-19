@@ -1,0 +1,19 @@
+.HeadingPrimary {
+    display: block;
+    position: relative;
+    width: fit-content;
+    height: auto;
+    color: #fff;
+    font-weight: bold !important;
+    margin: 0 auto;
+    margin-bottom: 0 !important;
+    font-size: 5rem;
+    letter-spacing: 2.4rem;
+    padding: 5rem;
+}
+
+.HeadingPrimary p {
+    font-size: 1.7rem;
+    letter-spacing: 0.3rem;
+    color: #979797;
+}
