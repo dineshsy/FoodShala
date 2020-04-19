@@ -1,23 +1,28 @@
 import {
     userSigninError,
     userSigninPending,
-    userSigninSuccess
+    userSigninSuccess,
 } from "../../store/action";
 
 import axios from "axios";
 
-function userSignin(data) {
-    
+function userSignin(data, accountType) {
+    var URL = "http://localhost:4000/users/authenticate";
+    if (accountType === "Restaurant") {
+        URL = "http://localhost:4000/clients/authenticate";
+    }
     return (dispatch) => {
         dispatch(userSigninPending());
         axios
-            .post("http://localhost:4000/users/authenticate", data)
+            .post(URL, data)
             .then((res) => res.data)
             .then((user) => {
                 dispatch(userSigninSuccess(user));
                 return user;
             })
             .catch((error) => {
+                console.log(error);
+                
                 dispatch(userSigninError(error.message));
             });
     };

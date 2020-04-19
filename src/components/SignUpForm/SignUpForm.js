@@ -1,179 +1,75 @@
 import React, { Component } from "react";
 
-import Input from "../Input/Input";
-
+import classes from './SignUpForm.module.css'
+import ClientSignUp from "./Client/CustomerSignUp";
+import CustomerSignUp from "./Customer/ClientSignUp";
+import Tabbar from "../UI/Tabbar/Tabbar";
 export default class SignUpForm extends Component {
     state = {
-        primaryDetails: {
-            firstName: {
-                id: "1",
-                elementType: "input",
-                label: "User Name",
-                elementConfig: {
-                    type: "text",
-                    placeholder: "Value",
-                },
-                value: "",
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false,
+        tabs: {
+            customer: {
+                id: "Customer",
+                active: true,
             },
-            lastName: {
-                id: "2",
-                elementType: "input",
-                label: "Password",
-                elementConfig: {
-                    type: "text",
-                    placeholder: "Value",
-                },
-                value: "",
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false,
-            },
-            username: {
-                id: "3",
-                elementType: "input",
-                label: "User Name",
-                elementConfig: {
-                    type: "text",
-                    placeholder: "Value",
-                },
-                value: "",
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false,
-            },
-            password: {
-                id: "4",
-                elementType: "input",
-                label: "Password",
-                elementConfig: {
-                    type: "text",
-                    placeholder: "Value",
-                },
-                value: "",
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false,
-            },
-            serving: {
-                id: "5",
-                elementType: "select",
-                label: "Serving",
-                elementConfig: {
-                    type: "text",
-                    placeholder: "Value",
-                    option: [
-                        { value: "", displayValue: "Value" },
-                        {
-                            value: "veg",
-                            displayValue: "Veg",
-                        },
-                        {
-                            value: "nonVeg",
-                            displayValue: "Non Veg",
-                        },
-                    ],
-                },
-                value: "",
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false,
+            restaurant: {
+                id: "Restaurant",
+                active: false,
             },
         },
-        restaurantDetails: {
-            firstName: {
-                id: "1",
-                elementType: "input",
-                label: "User Name",
-                elementConfig: {
-                    type: "text",
-                    placeholder: "Value",
-                },
-                value: "",
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false,
-            },
-            lastName: {
-                id: "2",
-                elementType: "input",
-                label: "Password",
-                elementConfig: {
-                    type: "text",
-                    placeholder: "Value",
-                },
-                value: "",
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false,
-            },
-            username: {
-                id: "3",
-                elementType: "input",
-                label: "User Name",
-                elementConfig: {
-                    type: "text",
-                    placeholder: "Value",
-                },
-                value: "",
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false,
-            },
-            password: {
-                id: "4",
-                elementType: "input",
-                label: "Password",
-                elementConfig: {
-                    type: "text",
-                    placeholder: "Value",
-                },
-                value: "",
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false,
-            },
-            cusines: {
-                id: "5",
-                elementType: "input",
-                label: "Cusines",
-                elementConfig: {
-                    type: "text",
-                    placeholder: "Value",
-                },
-                tagHandler: true,
-                selected: [],
-                value: "",
-                actions: true,
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false,
-            },
-        },
+        accountType: "Customer",
     };
+
+    tabChangeHandler = (id) => {
+        let updatedTabs = {
+            ...this.state.tabs,
+        };
+
+        for (let tab in updatedTabs) {
+            if (updatedTabs[tab].active === true) {
+                updatedTabs[tab].active = false;
+                break;
+            }
+        }
+
+        for (let tab in updatedTabs) {
+            if (updatedTabs[tab].id === id) {
+                updatedTabs[tab].active = true;
+                break;
+            }
+        }
+
+        this.setState({
+            accountType: id,
+        });
+    };
+
     render() {
-        return <div></div>;
+        let form =
+            this.state.accountType === "Customer" ? (
+                <ClientSignUp
+                    change={this.props.change}
+                    cancel={this.props.cancel}
+                />
+            ) : (
+                <CustomerSignUp
+                    change={this.props.change}
+                    cancel={this.props.cancel}
+                />
+            );
+
+        const tabs = [];
+
+        for (let tab in this.state.tabs) {
+            tabs.push({
+                id: this.state.tabs[tab].id,
+                active: this.state.tabs[tab].active,
+            });
+        }
+        return (
+            <div className={classes.Form}>
+                <Tabbar clicked={this.tabChangeHandler} tabs={tabs} />
+                {form}
+            </div>
+        );
     }
 }

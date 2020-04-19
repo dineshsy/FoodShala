@@ -12,6 +12,7 @@
 
 .SignInForm button {
     margin: 1rem;
+    z-index: 0;
 }
 
 .SignInForm h5 {

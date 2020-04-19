@@ -1,0 +1,21 @@
+.Customer h3 {
+    font-size: 1.5rem;
+}
+
+.Customer h3 div {
+    display: inline;
+    color: blue;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.Customer button {
+    width: 80%;
+    margin: 1rem auto;
+    z-index: 0;
+}
+
+.Customer h5 {
+    color: red;
+    font-size: 1rem;
+}

@@ -44,6 +44,32 @@ class SignInForm extends Component {
                 valid: false,
                 touched: false,
             },
+            accountType: {
+                id: "3",
+                elementType: "select",
+                label: "Account Type",
+                elementConfig: {
+                    type: "text",
+                    placeholder: "Value",
+                    option: [
+                        { value: "", displayValue: "Value" },
+                        {
+                            value: "Customer",
+                            displayValue: "Customer",
+                        },
+                        {
+                            value: "Restaurant",
+                            displayValue: "Restaurant",
+                        },
+                    ],
+                },
+                value: "",
+                validation: {
+                    required: true,
+                },
+                valid: false,
+                touched: false,
+            },
         },
         formIsValid: false,
         errorText: "",
@@ -96,14 +122,14 @@ class SignInForm extends Component {
         };
         const { userSignin } = this.props;
 
-        userSignin(data);
+        userSignin(data, this.state.primaryDetails.accountType.value);
     };
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.user !== this.props.user) {
             this.props.cancel();
         }
-        if (this.props.error !== prevProps.error) {
+        if (this.props.error !== prevProps.error && this.props.error !== null) {
             this.setState({ errorText: "Username or password is incorrect" });
             const updatedPrimaryDetails = {
                 ...this.state.primaryDetails,
@@ -155,7 +181,10 @@ class SignInForm extends Component {
                     clicked={(event) => this.signInHandler(event)}
                     name={this.props.pending ? <Spinner /> : "Sign In"}
                 />
-                <h3>New foodie!!?? <div onClick= {this.props.change}>Register here!</div></h3>
+                <h3>
+                    New foodie!!??{" "}
+                    <div onClick={this.props.change}>Register here!</div>
+                </h3>
             </form>
         );
     }

@@ -10,7 +10,7 @@ const input = (props) => {
     }
     switch (props.elementType) {
         case "input":
-            if (!props.isTag)
+            if (!props.isTag && !props.isPassword)
                 inputElement = (
                     <input
                         onKeyPress={(event) => {
@@ -25,6 +25,7 @@ const input = (props) => {
                         onChange={props.changed}
                     />
                 );
+           
             else
                 inputElement = (
                     <React.Fragment>
@@ -131,7 +132,7 @@ const input = (props) => {
     return (
         <div
             className={
-                props.isTag || props.elementType === "textarea"
+                props.isTag || props.elementType === "textarea" 
                     ? classes.InputCheckbox
                     : classes.Input
             }

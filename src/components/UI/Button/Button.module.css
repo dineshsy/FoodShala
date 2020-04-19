@@ -48,7 +48,7 @@
     color: #fff;
     border: 1px solid #fff;
     cursor: pointer;
-    display: inline-block;
+    display: block;
     position: relative;
     padding: 1rem 3rem;
     border-radius: .8rem;
