@@ -16,7 +16,6 @@ function fetchProducts(id) {
                 return products;
             })
             .catch((error) => {
-                console.log(error.message);
                 dispatch(fetchProductsError(error));
             });
     };

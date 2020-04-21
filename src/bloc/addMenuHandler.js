@@ -19,7 +19,6 @@ function addMenu(data, user) {
                 return products;
             })
             .catch((error) => {
-                console.log(error.message);
                 dispatch(addMenuError(error));
             });
     };

@@ -82,8 +82,7 @@ export function fetchOrdersPending() {
 }
 
 export function fetchOrdersSuccess(orders) {
-    console.log(orders);
-    
+
     return {
         type: FETCH_ORDERS_SUCCESS,
         orders

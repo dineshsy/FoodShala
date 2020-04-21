@@ -18,7 +18,6 @@ function orderStatusHandler(data,id) {
                 dispatch(checkoutSuccess())
             })
             .catch((error) => {
-                console.log(error.message);
                 dispatch(fetchOrdersError(error));
             });
     };

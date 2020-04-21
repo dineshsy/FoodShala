@@ -13,12 +13,10 @@ function fetchClients() {
             .get("http://localhost:4000/clients")
             .then((res) => res.data)
             .then((clients) => {
-                console.log(clients);
                 dispatch(fetchClientsSuccess(clients));
                 return clients;
             })
             .catch((error) => {
-                console.log(error.message);
                 dispatch(fetchClientsError(error));
             });
     };

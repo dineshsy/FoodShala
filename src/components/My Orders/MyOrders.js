@@ -32,10 +32,8 @@ class MyOrders extends Component {
 
     componentDidUpdate(prevProps) {
         if(prevProps.orders !== this.props.orders){
-            console.log(this.props.restaurants);
             
             if(this.props.orders.length){
-                console.log(this.props.orders)
                 let orders = []
                 let restaurantName = "";
                 for(let order of this.props.orders) {

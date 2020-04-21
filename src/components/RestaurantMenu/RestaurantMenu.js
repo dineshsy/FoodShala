@@ -22,7 +22,6 @@ class RestaurantMenu extends Component {
     state = {};
 
     UNSAFE_componentWillMount() {
-        console.log(this.props);
 
         if (this.props.restaurant === null) {
             this.props.history.replace("/");
@@ -50,7 +49,6 @@ class RestaurantMenu extends Component {
                     })
             );
 
-            console.log(products);
             this.setState({
                 products,
             });

@@ -16,7 +16,6 @@ class Restaurants extends Component {
     }
 
     shouldComponentUpdate(prevProps, prevState) {
-        console.log();
         if (prevProps.clients == this.props.client) return false;
         return true;
     }

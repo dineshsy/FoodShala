@@ -48,7 +48,6 @@ export function productsReducer(state = initialState, action) {
                 pending: true,
             };
         case USER_SIGNIN_SUCCESS:
-            console.log(action.user);
             return {
                 ...state,
                 pending: false,

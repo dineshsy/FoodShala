@@ -5,8 +5,7 @@ import classes from "./RestaurantMenuItem.module.css";
 import Button from "../../UI/Button/Button";
 
 export default function RestaurantMenuItem(props) {
-    console.log(props);
-    
+
     return (
         <div className={classes.Item}>
             <div className={classes.Leading}>

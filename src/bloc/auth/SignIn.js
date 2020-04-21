@@ -22,8 +22,6 @@ function userSignin(data, accountType) {
                 return user;
             })
             .catch((error) => {
-                console.log(error);
-
                 dispatch(userSigninError(error.message));
             });
     };

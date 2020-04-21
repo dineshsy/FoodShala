@@ -247,7 +247,7 @@ class CustomerSignUp extends Component {
         }
 
         data["accountType"] = "Restaurant";
-        console.log(data);
+
         
 
         this.props.customerSignUp(data);

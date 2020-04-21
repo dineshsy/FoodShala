@@ -16,9 +16,6 @@ function clientSignUp(data) {
                 dispatch(customerSignUpSuccess());
             })
             .catch((error) => {
-                console.log(error);
-
-                console.log(error.message);
 
                 dispatch(customerSignUpError(error.message));
             });

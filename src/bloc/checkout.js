@@ -23,7 +23,6 @@ function checkout(data, user) {
                 return products;
             })
             .catch((error) => {
-                console.log(error.message);
                 dispatch(checkoutError(error));
             });
     };

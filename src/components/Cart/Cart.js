@@ -111,7 +111,6 @@ class Cart extends Component {
             data["products"] = this.state.products;
             data["status"] = "pending";
 
-            console.log(this.props.user);
 
             this.props.checkOutHandler(data, this.props.user);
         }
@@ -123,7 +122,6 @@ class Cart extends Component {
     };
 
     componentDidUpdate(prevProps, prevState) {
-        console.log(this.props.checkout, prevProps.checkout);
 
         if (prevProps.checkout !== this.props.checkout) {
             if (this.props.checkout === true) {

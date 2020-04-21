@@ -10,7 +10,6 @@ function fetchOrders(user) {
     return (dispatch) => {
         var token = user.token;
         token = token.toString('base64');
-        console.log(token);
         
         dispatch(fetchOrdersPending());
         axios
@@ -25,7 +24,6 @@ function fetchOrders(user) {
                 return products;
             })
             .catch((error) => {
-                console.log(error.message);
                 dispatch(fetchOrdersError(error));
             });
     };
