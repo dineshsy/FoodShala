@@ -10,13 +10,15 @@ function clientSignUp(data) {
     return (dispatch) => {
         dispatch(customerSignUpPending());
         axios
-            .post("http://localhost:4000/clients/register", data)
+            .post(
+                "https://murmuring-ridge-20737.herokuapp.com/clients/register",
+                data
+            )
             .then((res) => res.data)
             .then(() => {
                 dispatch(customerSignUpSuccess());
             })
             .catch((error) => {
-
                 dispatch(customerSignUpError(error.message));
             });
     };

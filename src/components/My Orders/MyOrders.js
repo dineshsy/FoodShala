@@ -61,12 +61,27 @@ class MyOrders extends Component {
     statusHandler =(id) => {
 
         const data = {}
+
+        
         for(let order of this.state.orders) {
             if(order.id === id){
                 data["status"] = order.status === "pending" ? "delivered" : "delivered";
                 break
             }
         }
+
+        const updatedOrder = [...this.state.orders];
+
+        for(let order of updatedOrder) {
+            if(order.id === id){
+                order.status =
+                    order.status === "pending" ? "delivered" : "delivered";
+            }
+        }
+        
+        this.setState({orders:updatedOrder})
+
+
         
         this.props.orderStatusHandler(data,id);
     }

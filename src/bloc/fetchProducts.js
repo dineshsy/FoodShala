@@ -9,7 +9,8 @@ import axios from 'axios'
 function fetchProducts(id) {
     return (dispatch) => {
         dispatch(fetchProductsPending());
-        axios.get(`http://localhost:4000/menu/${id}`)
+        axios
+            .get(`https://murmuring-ridge-20737.herokuapp.com/menu/${id}`)
             .then((res) => res.data)
             .then((products) => {
                 dispatch(fetchProductsSuccess(products));

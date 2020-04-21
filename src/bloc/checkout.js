@@ -12,11 +12,15 @@ function checkout(data, user) {
 
         dispatch(checkoutPending());
         axios
-            .post(`http://localhost:4000/order/addOrder`, data, {
-                headers: {
-                    "Authorization" : `Bearer ${token}`
+            .post(
+                `https://murmuring-ridge-20737.herokuapp.com/order/addOrder`,
+                data,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
                 }
-            })
+            )
             .then((res) => res.data)
             .then((products) => {
                 dispatch(checkoutSuccess(products));

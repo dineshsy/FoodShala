@@ -7,7 +7,7 @@ import {
 import axios from "axios";
 
 function userSignin(data, accountType) {
-    var URL = "http://localhost:4000/users/authenticate";
+    var URL = "https://murmuring-ridge-20737.herokuapp.com/users/authenticate";
     if (accountType === "Restaurant") {
         URL = "http://localhost:4000/clients/authenticate";
     }

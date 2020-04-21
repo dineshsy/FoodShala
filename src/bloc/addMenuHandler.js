@@ -8,11 +8,15 @@ function addMenu(data, user) {
 
         dispatch(addMenuPending());
         axios
-            .post(`http://localhost:4000/menu/addMenu`, data, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            })
+            .post(
+                `https://murmuring-ridge-20737.herokuapp.com/menu/addMenu`,
+                data,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            )
             .then((res) => res.data)
             .then((products) => {
                 dispatch(addMenuSuccess(products));

@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import fetchClientsAction from "../../bloc/fetchClients";
-import { getClients } from "../../store/reducer";
+import { getClients,getClientPending,getClientError } from "../../store/reducer";
 import RestaurantCard from "../UI/RestaurantCard/RestaurantCard";
 import { NavLink } from "react-router-dom";
 
@@ -21,6 +21,15 @@ class Restaurants extends Component {
     }
 
     render() {
+
+        if(this.props.pending) {
+            return <h1>Please while we fetch Restaurants</h1>
+        }
+
+        if(this.props.error) {
+            return <h1>Something went wrong please try refreshing</h1>
+        }
+        
         const restaurants = [];
         this.props.clients.forEach((client) =>
             restaurants.push({
@@ -52,6 +61,8 @@ class Restaurants extends Component {
 
 const mapStateToProps = (state) => ({
     clients: getClients(state),
+    pending: getClientPending(state),
+    error: getClientError(state)
 });
 
 const mapDispatchToProps = (dispatch) =>

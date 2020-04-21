@@ -13,11 +13,14 @@ function fetchOrders(user) {
         
         dispatch(fetchOrdersPending());
         axios
-            .get(`http://localhost:4000/order/${user._id}/${user.accountType}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            })
+            .get(
+                `https://murmuring-ridge-20737.herokuapp.com/order/${user._id}/${user.accountType}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            )
             .then((res) => res.data)
             .then((products) => {
                 dispatch(fetchOrdersSuccess(products));
