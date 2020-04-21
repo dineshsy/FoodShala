@@ -10,7 +10,7 @@ function fetchProducts(id) {
     return (dispatch) => {
         dispatch(fetchProductsPending());
         axios
-            .get(`https://murmuring-ridge-20737.herokuapp.com/menu/${id}`)
+            .get(`https://foodshala-db.herokuapp.com/menu/${id}`)
             .then((res) => res.data)
             .then((products) => {
                 dispatch(fetchProductsSuccess(products));

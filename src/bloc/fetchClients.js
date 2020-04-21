@@ -10,7 +10,7 @@ function fetchClients() {
     return (dispatch) => {
         dispatch(fetchClientsPending());
         axios
-            .get("https://murmuring-ridge-20737.herokuapp.com/clients")
+            .get("https://foodshala-db.herokuapp.com/clients")
             .then((res) => res.data)
             .then((clients) => {
                 dispatch(fetchClientsSuccess(clients));

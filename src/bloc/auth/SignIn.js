@@ -7,9 +7,9 @@ import {
 import axios from "axios";
 
 function userSignin(data, accountType) {
-    var URL = "https://murmuring-ridge-20737.herokuapp.com/users/authenticate";
+    var URL = "https://foodshala-db.herokuapp.com/users/authenticate";
     if (accountType === "Restaurant") {
-        URL = "http://localhost:4000/clients/authenticate";
+        URL = "https://foodshala-db.herokuapp.com/clients/authenticate";
     }
     return (dispatch) => {
         dispatch(userSigninPending());

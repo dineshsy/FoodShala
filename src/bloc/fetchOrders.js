@@ -14,7 +14,7 @@ function fetchOrders(user) {
         dispatch(fetchOrdersPending());
         axios
             .get(
-                `https://murmuring-ridge-20737.herokuapp.com/order/${user._id}/${user.accountType}`,
+                `https://foodshala-db.herokuapp.com/order/${user._id}/${user.accountType}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,

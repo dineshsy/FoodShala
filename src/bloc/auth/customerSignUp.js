@@ -10,10 +10,7 @@ function clientSignUp(data) {
     return (dispatch) => {
         dispatch(customerSignUpPending());
         axios
-            .post(
-                "https://murmuring-ridge-20737.herokuapp.com/clients/register",
-                data
-            )
+            .post("https://foodshala-db.herokuapp.com/clients/register", data)
             .then((res) => res.data)
             .then(() => {
                 dispatch(customerSignUpSuccess());

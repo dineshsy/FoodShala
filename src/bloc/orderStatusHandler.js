@@ -11,10 +11,7 @@ function orderStatusHandler(data,id) {
     return (dispatch) => {
         dispatch(fetchOrdersPending());
         axios
-            .put(
-                `https://murmuring-ridge-20737.herokuapp.com/order/${id}/`,
-                data
-            )
+            .put(`https://foodshala-db.herokuapp.com/order/${id}/`, data)
             .then((res) => res.data)
             .then((data) => {
                 dispatch(checkoutSuccess());
