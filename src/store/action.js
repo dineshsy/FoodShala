@@ -30,6 +30,10 @@ export const CHECKOUT_ERROR = "CHECKOUT_ERROR";
 export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART"
 // clear items from cart
 export const CLEAR_CART = "CLEAR_CART"
+// add menu item
+export const ADD_MENU_PENDING = "ADD_MENU_PENDING";
+export const ADD_MENU_SUCCESS = "ADD_MENU_SUCCESS";
+export const ADD_MENU_ERROR = "ADD_MENU_ERROR";
 
 export function fetchProductsPending() {
     return {
@@ -78,6 +82,8 @@ export function fetchOrdersPending() {
 }
 
 export function fetchOrdersSuccess(orders) {
+    console.log(orders);
+    
     return {
         type: FETCH_ORDERS_SUCCESS,
         orders
@@ -146,6 +152,25 @@ export const customerSignUpSuccess = () => {
 export const customerSignUpPending = () => {
     return {
         type: CUSTOMER_SIGNUP_PENDING,
+    }
+};
+
+export const addMenuError = (error) => {
+    return {
+        type: ADD_MENU_ERROR,
+        error
+    }
+};
+
+export const addMenuSuccess = () => {
+    return {
+        type: ADD_MENU_SUCCESS,
+    }
+};
+
+export const addMenuPending = () => {
+    return {
+        type: ADD_MENU_PENDING,
     }
 };
 export const checkoutError = (error) => {

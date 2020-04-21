@@ -18,7 +18,7 @@ export default function RestaurantMenuItem(props) {
             </div>
             <h3
                 style={
-                    props.mealType === "veg"
+                    props.product.mealType === "veg"
                         ? { color: "green" }
                         : { color: "red" }
                 }

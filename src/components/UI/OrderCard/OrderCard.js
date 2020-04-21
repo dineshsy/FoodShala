@@ -37,7 +37,7 @@ export default function OrderCard(props) {
             </div>
             <div className={classes.Footer}>
                 <span>Total Price: {props.price}</span>
-                {props.restaurant ? (
+                {props.restaurant === "Restaurant" ? (
                     <span >
                         Status :{" "}
                         <Button

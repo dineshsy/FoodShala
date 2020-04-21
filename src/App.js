@@ -2,15 +2,6 @@ import React, { Component } from "react";
 
 import classes from "./App.module.css";
 
-// import { connect } from "react-redux";
-// import { bindActionCreators } from "redux";
-// import fetchProductsAction from "./bloc/fetchProducts";
-// import {
-//     getProducts,
-//     getProductsError,
-//     getProductsPending,
-//     getUser
-// } from "./store/reducer";
 import IntroPage from "./components/IntroPage/IntroPage";
 import AnimatedPages from "./components/AnimatedPages/AnimatedPages";
 import ExploreBuilder from "./container/ExploreBuilder/ExploreBuilder";
@@ -22,12 +13,6 @@ export default class App extends Component {
         explore: false,
         disAppear: false,
     };
-
-    // fetch menu
-    // componentWillMount() {
-    //     const { fetchProducts } = this.props;
-    //     fetchProducts();
-    // }
 
     exploreHandler = () => {
         var scope = this;
@@ -67,20 +52,3 @@ export default class App extends Component {
 
     }
 }
-
-// const mapStateToProps = (state) => ({
-//     products: getProducts(state),
-//     error: getProductsError(state),
-//     pending: getProductsPending(state),
-//     user: getUser(state)
-// });
-
-// const mapDispatchToProps = (dispatch) =>
-//     bindActionCreators(
-//         {
-//             fetchProducts: fetchProductsAction,
-//         },
-//         dispatch
-//     );
-
-// export default connect(mapStateToProps, mapDispatchToProps)(App);

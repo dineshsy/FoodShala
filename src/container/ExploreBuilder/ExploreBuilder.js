@@ -13,6 +13,7 @@ import Restaurants from "../../components/Restaurants/Restaurants";
 import RestaurantMenu from "../../components/RestaurantMenu/RestaurantMenu";
 import Cart from "../../components/Cart/Cart";
 import MyOrders from "../../components/My Orders/MyOrders";
+import AddMenu from "../../components/AddMenu/AddMenu";
 
 class ExploreBuilder extends Component {
     state = {
@@ -42,14 +43,16 @@ class ExploreBuilder extends Component {
                             change={() => this.showModal("s-up")}
                             cancel={this.popModal}
                         />
-                    ) : (
+                    ) : this.state.form === "s-up" ? (
                         <SignUpForm
                             change={() => this.showModal("s-in")}
                             cancel={this.popModal}
                         />
+                    ) : (
+                        <AddMenu cancel={this.popModal} />
                     )}
                 </Modal>
-                <Navbar showModal={this.showModal} />
+                <Navbar cancel={this.popModal} showModal={this.showModal} />
                 <div
                     style={{
                         padding: "10rem 1rem 1rem 1rem",
@@ -66,17 +69,22 @@ class ExploreBuilder extends Component {
                         />
                     ) : (
                         <Route
+                            exact
                             path="/"
                             render={() => (
                                 <RestaurantMenu
                                     {...this.props.history}
-                                    restaurant={{ id: this.props.user._id, name: this.props.user.restaurantName}}
+                                    restaurant={{
+                                        id: this.props.user._id,
+                                        name: this.props.user.restaurantName,
+                                    }}
                                     noEdit
                                 />
                             )}
                         />
                     )}
                     <Route
+                        exact
                         path="/menu"
                         render={() => (
                             <RestaurantMenu
@@ -91,14 +99,8 @@ class ExploreBuilder extends Component {
                             <Cart showModal={() => this.showModal("s-in")} />
                         )}
                     />
-                    <Route
-                        path="/myorders"
-                        render={() => (
-                            <MyOrders
-                                showModal={() => this.showModal("s-in")}
-                            />
-                        )}
-                    />
+                    <Route path="/myorders" render={() => <MyOrders />} />
+                    <Route path="/orders" render={() => <MyOrders/>}/>
                 </div>
             </React.Fragment>
         );

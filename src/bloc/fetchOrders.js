@@ -9,7 +9,9 @@ import axios from "axios";
 function fetchOrders(user) {
     return (dispatch) => {
         var token = user.token;
-
+        token = token.toString('base64');
+        console.log(token);
+        
         dispatch(fetchOrdersPending());
         axios
             .get(`http://localhost:4000/order/${user._id}/${user.accountType}`, {

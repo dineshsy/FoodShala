@@ -10,7 +10,7 @@ import {
     faUserNinja,
     faShoppingCart,
     faCarrot,
-    faPlusSquare
+    faPlusSquare,
 } from "@fortawesome/free-solid-svg-icons";
 
 class Navbar extends Component {
@@ -53,12 +53,14 @@ class Navbar extends Component {
                             name="My Orders"
                         />
                     ) : (
-                        <NavigationItem
-                            exact
-                            img={<FontAwesomeIcon icon={faPlusSquare} />}
-                            link="/addMenu"
-                            name="Add Menu"
-                        />
+                        <div onClick={() => this.props.showModal("addMenu")}>
+                            <NavigationItem
+                                exact
+                                img={<FontAwesomeIcon icon={faPlusSquare} />}
+                                link="/"
+                                name="Add Menu"
+                            />
+                        </div>
                     )}
                     {this.props.user === null ||
                     this.props.user.accountType === "Customer" ? (

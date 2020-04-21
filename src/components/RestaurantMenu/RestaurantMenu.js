@@ -16,7 +16,7 @@ import fetchProductsAction from "../../bloc/fetchProducts";
 import dummy from "../../assets/Background/dummyRestaurant1.jpg";
 import { withRouter } from "react-router-dom";
 import RestaurantMenuItem from "./RestaurantMenuItem/RestaurantMenuItem";
-import Spinner from "../UI/Spinner/Spinner";
+
 
 class RestaurantMenu extends Component {
     state = {};

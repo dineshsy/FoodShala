@@ -21,7 +21,10 @@ import {
     CLEAR_CART,
     FETCH_ORDERS_ERROR,
     FETCH_ORDERS_PENDING,
-    FETCH_ORDERS_SUCCESS
+    FETCH_ORDERS_SUCCESS,
+    ADD_MENU_ERROR,
+    ADD_MENU_PENDING,
+    ADD_MENU_SUCCESS
 } from "./action";
 
 const initialState = {
@@ -33,7 +36,8 @@ const initialState = {
     clients: [],
     cart: {},
     checkout: false,
-    orders: []
+    orders: [],
+    addMenu: false
 };
 
 export function productsReducer(state = initialState, action) {
@@ -155,7 +159,6 @@ export function productsReducer(state = initialState, action) {
                 error: action.error,
             };
         case CHECKOUT_PENDING:
-            console.log("pending")
             return {
                 ...state,
                 error: null,
@@ -164,8 +167,6 @@ export function productsReducer(state = initialState, action) {
             };
         case CHECKOUT_SUCCESS:
 
-            console.log("success");
-
             return {
                 ...state,
                 pending: false,
@@ -173,6 +174,27 @@ export function productsReducer(state = initialState, action) {
                 checkout: true
             };
         case CHECKOUT_ERROR:
+            return {
+                ...state,
+                pending: false,
+                error: action.error,
+            };
+        case ADD_MENU_PENDING:
+            return {
+                ...state,
+                error: null,
+                pending: true,
+                addMenu: false
+            };
+        case ADD_MENU_SUCCESS:
+
+            return {
+                ...state,
+                pending: false,
+                error: null,
+                addMenu: true
+            };
+        case ADD_MENU_ERROR:
             return {
                 ...state,
                 pending: false,
@@ -227,5 +249,9 @@ export const getOrdersSuccess = (state) => state.orders;
 export const checkoutPending = (state) => state.pending;
 export const checkoutError = (state) => state.error;
 export const checkoutSuccess = (state) => state.checkout;
+
+export const getAddMenuPending = (state) => state.pending;
+export const getAddMenuError = (state) => state.error;
+export const getAddMenuSuccess = (state) => state.addMenu;
 
 export const getCart = (state) => state.cart

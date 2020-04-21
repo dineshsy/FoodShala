@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 
-import classes from "./SignInForm.module.css";
+import classes from "./AddMenu.module.css";
 
+import {
+    getAddMenuError,
+    getAddMenuPending,
+    getAddMenuSuccess,
+    getUser,
+} from "../../store/reducer";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import userSigninAction from "../../bloc/auth/SignIn";
-import { getUser, getUserError, getUserPending } from "../../store/reducer";
+import addMenuHandlerAction from "../../bloc/addMenuHandler";
+import fetchProductsAction from "../../bloc/fetchProducts";
 
 import { withRouter } from "react-router-dom";
 
@@ -13,13 +19,13 @@ import Input from "../Input/Input";
 import Button from "../UI/Button/Button";
 import Spinner from "../UI/Spinner/Spinner";
 
-class SignInForm extends Component {
+class AddMenu extends Component {
     state = {
         primaryDetails: {
-            username: {
+            name: {
                 id: "1",
                 elementType: "input",
-                label: "User Name",
+                label: "Food Name",
                 elementConfig: {
                     type: "text",
                     placeholder: "Value",
@@ -31,12 +37,12 @@ class SignInForm extends Component {
                 valid: false,
                 touched: false,
             },
-            password: {
+            itemDescription: {
                 id: "2",
                 elementType: "input",
-                label: "Password",
+                label: "Food Description",
                 elementConfig: {
-                    type: "password",
+                    type: "text",
                     placeholder: "Value",
                 },
                 value: "",
@@ -46,24 +52,39 @@ class SignInForm extends Component {
                 valid: false,
                 touched: false,
             },
-            accountType: {
+            mealType: {
                 id: "3",
                 elementType: "select",
-                label: "Account Type",
+                label: "Meal Type",
                 elementConfig: {
                     type: "text",
                     placeholder: "Value",
                     option: [
                         { value: "", displayValue: "Value" },
                         {
-                            value: "Customer",
-                            displayValue: "Customer",
+                            value: "veg",
+                            displayValue: "Veg",
                         },
                         {
-                            value: "Restaurant",
-                            displayValue: "Restaurant",
+                            value: "nonveg",
+                            displayValue: "Non Veg",
                         },
                     ],
+                },
+                value: "",
+                validation: {
+                    required: true,
+                },
+                valid: false,
+                touched: false,
+            },
+            price: {
+                id: "4",
+                elementType: "input",
+                label: "Price",
+                elementConfig: {
+                    type: "text",
+                    placeholder: "Value",
                 },
                 value: "",
                 validation: {
@@ -117,38 +138,48 @@ class SignInForm extends Component {
         });
     };
 
-    signInHandler = (event) => {
-        const data = {
-            username: this.state.primaryDetails.username.value,
-            password: this.state.primaryDetails.password.value,
-        };
-        const { userSignin } = this.props;
-
-        userSignin(data, this.state.primaryDetails.accountType.value);
-    };
-
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.user !== this.props.user) {
-            this.props.cancel();
-            this.props.history.replace("/");
+        if (prevProps.addMenu !== this.props.addMenu) {
+            if (this.props.addMenu) {
+                this.props.fetchProducts(this.props.user._id);
+                this.props.cancel();
+                this.props.history.replace("/");
+            }
         }
         if (
             this.props.error !== prevProps.error &&
             this.props.error !== null &&
             this.state.formIsValid
         ) {
-            this.setState({ errorText: "Username or password is incorrect" });
+            this.setState({
+                errorText: "Something went wrong please try again",
+            });
             const updatedPrimaryDetails = {
                 ...this.state.primaryDetails,
             };
-            updatedPrimaryDetails.password.value = "";
-            updatedPrimaryDetails.username.value = "";
+            for (const field in updatedPrimaryDetails) {
+                updatedPrimaryDetails[field].value = "";
+            }
             this.setState({
                 primaryDetails: updatedPrimaryDetails,
                 formIsValid: false,
             });
         }
     }
+
+    addMenuHandler = () => {
+        const data = {};
+
+        data["name"] = this.state.primaryDetails.name.value;
+        data[
+            "itemDescription"
+        ] = this.state.primaryDetails.itemDescription.value;
+        data["mealType"] = this.state.primaryDetails.mealType.value;
+        data["price"] = +this.state.primaryDetails.price.value;
+        data["restaurantId"] = this.props.user._id;
+
+        this.props.addMenuHandler(data, this.props.user);
+    };
 
     render() {
         let formElements = [];
@@ -178,40 +209,39 @@ class SignInForm extends Component {
             );
         });
         return (
-            <form className={classes.SignInForm} onSubmit={this.signInHandler}>
-                <h5>{this.state.errorText}</h5>
-                {form}
-                <Button
-                    fill
-                    disabled={!this.state.formIsValid}
-                    config={{ type: "button" }}
-                    clicked={(event) => this.signInHandler(event)}
-                    name={this.props.pending ? <Spinner /> : "Sign In"}
-                />
-                <h3>
-                    New foodie!!??{" "}
-                    <div onClick={this.props.change}>Register here!</div>
-                </h3>
-            </form>
+            <React.Fragment>
+                <span className={classes.Heading}>Add Menu Item</span>
+                <form className={classes.SignInForm}>
+                    <h5>{this.state.errorText}</h5>
+                    {form}
+                    <Button
+                        fill
+                        disabled={!this.state.formIsValid}
+                        config={{ type: "button" }}
+                        clicked={(event) => this.addMenuHandler(event)}
+                        name={this.props.pending ? <Spinner /> : "Add To Menu"}
+                    />
+                </form>
+            </React.Fragment>
         );
     }
 }
-
 const mapStateToProps = (state) => ({
+    addMenu: getAddMenuSuccess(state),
+    error: getAddMenuError(state),
+    pending: getAddMenuPending(state),
     user: getUser(state),
-    error: getUserError(state),
-    pending: getUserPending(state),
 });
 
 const mapDispatchToProps = (dispatch) =>
     bindActionCreators(
         {
-            userSignin: userSigninAction,
+            addMenuHandler: addMenuHandlerAction,
+            fetchProducts: fetchProductsAction,
         },
         dispatch
     );
-
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(withRouter(SignInForm));
+)(withRouter(AddMenu));

@@ -10,6 +10,7 @@ import {
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import fetchOrdersAction from "../../bloc/fetchOrders";
+import orderStatusHandlerAction from '../../bloc/orderStatusHandler'
 
 import classes from './MyOrders.module.css'
 
@@ -34,6 +35,7 @@ class MyOrders extends Component {
             console.log(this.props.restaurants);
             
             if(this.props.orders.length){
+                console.log(this.props.orders)
                 let orders = []
                 let restaurantName = "";
                 for(let order of this.props.orders) {
@@ -44,8 +46,6 @@ class MyOrders extends Component {
                     }
                 }
                 }
-                
-                
                 for (const order of this.props.orders) {
                     orders.push( {
                         id:order.id,
@@ -60,6 +60,19 @@ class MyOrders extends Component {
         }
     }
 
+    statusHandler =(id) => {
+
+        const data = {}
+        for(let order of this.state.orders) {
+            if(order.id === id){
+                data["status"] = order.status === "pending" ? "delivered" : "delivered";
+                break
+            }
+        }
+        
+        this.props.orderStatusHandler(data,id);
+    }
+
     render() {
 
         if(this.props.ordersPending){
@@ -67,14 +80,16 @@ class MyOrders extends Component {
         }
 
         if(this.state.orders.length === 0){
-            return <h1>You have not ordered yet.. Please Start Ordering</h1>
+            return this.props.user && this.props.user.accountType === "Customer" ?<h1>You have not ordered yet.. Please Start Ordering</h1>: <h1>No Orders have been placed by customers</h1>
         }
 
         const orders = [];
 
+
+
         this.state.orders.forEach(
            order =>  orders.push(
-                <OrderCard {...order}/>
+                <OrderCard statusHandler={() => this.statusHandler(order.id)} restaurant={this.props.user.accountType} {...order}/>
             )
         )
 
@@ -97,7 +112,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) =>
     bindActionCreators(
         {
-            fetchOrders:fetchOrdersAction
+            fetchOrders:fetchOrdersAction,
+            orderStatusHandler: orderStatusHandlerAction
         },
         dispatch
     );
