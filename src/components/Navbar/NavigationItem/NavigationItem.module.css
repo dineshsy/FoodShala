@@ -1,0 +1,55 @@
+.NavigationItem {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    height: 5rem;
+    text-decoration: none;
+    color: #979797;
+    cursor: pointer;
+}
+
+.NavigationItem:hover {
+    color: #044999;
+}
+
+.NavigationItem .img {
+    padding: 1rem;
+    border-color: #979797;
+}
+
+.Logo {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 2.5rem;
+    letter-spacing: .8rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #044999;
+    transition: all .3s ease;
+}
+
+.Logo:hover {
+    transform: scale(1.2);
+}
+
+.NavigationItem span {
+    display: block;
+    padding: 0 .2rem;
+    margin: auto;
+}
+
+.Active {
+    color: #044999;
+}
+
+.Active .img {
+    padding: 1rem;
+    border-color: #000;
+}
+
+@media (max-width: 500px) {
+    .NavigationItem span {
+        display: none;
+    }
+}

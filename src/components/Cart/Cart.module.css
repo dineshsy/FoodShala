@@ -1,0 +1,28 @@
+.RestaurantMenu {
+    width: 100%;
+    height: auto;
+    font-size: 1.8rem;
+}
+
+.RestaurantMenu h2 {
+    font-weight: 500;
+    color: #044999;
+    margin-bottom: 5rem;
+    text-transform: capitalize;
+}
+
+.Header {
+    width: 100%;
+    height: 20rem;
+    background-color: #ccc;
+}
+
+.RestaurantMenu h2 span {
+    color: green;
+    cursor: pointer;
+    border: 1px solid green;
+    border-radius: 0.8rem;
+    padding: 0.5rem 1rem;
+    margin: 0 2rem;
+    box-shadow: 0 2px 16px -2px rgba(0, 0, 0, 0.473);
+}

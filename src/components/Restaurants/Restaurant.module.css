@@ -1,0 +1,18 @@
+.Restaurants {
+    width: 100%;
+    height: auto;
+    font-size: 1.8rem;
+}
+
+.Restaurants h2 {
+    font-weight: 500;
+    color: #044999;
+    margin-bottom: 5rem;
+}
+
+.Card {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    justify-items: center;
+    row-gap: 5rem;
+}

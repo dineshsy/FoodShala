@@ -1,0 +1,28 @@
+.RestaurantMenu {
+    width: 100%;
+    height: auto;
+    font-size: 1.8rem;
+}
+
+.RestaurantMenu h2 {
+    font-weight: 500;
+    color: #044999;
+    margin-bottom: 5rem;
+    text-transform: capitalize;
+}
+
+.Header {
+    width: 100%;
+    height: 20rem;
+    background-color: #ccc;
+}
+
+.Header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: scroll;
+}

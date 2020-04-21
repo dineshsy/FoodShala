@@ -1,0 +1,13 @@
+.Item {
+    display: flex;
+    width: 100%;
+    height: 10rem;
+    justify-content: space-between;
+    padding: 2rem 0;
+}
+
+.Actions {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 2rem;
+}

@@ -34,7 +34,7 @@ class SignInForm extends Component {
                 elementType: "input",
                 label: "Password",
                 elementConfig: {
-                    type: "text",
+                    type: "password",
                     placeholder: "Value",
                 },
                 value: "",
@@ -129,7 +129,7 @@ class SignInForm extends Component {
         if (prevProps.user !== this.props.user) {
             this.props.cancel();
         }
-        if (this.props.error !== prevProps.error && this.props.error !== null) {
+        if (this.props.error !== prevProps.error && this.props.error !== null && this.state.formIsValid) {
             this.setState({ errorText: "Username or password is incorrect" });
             const updatedPrimaryDetails = {
                 ...this.state.primaryDetails,

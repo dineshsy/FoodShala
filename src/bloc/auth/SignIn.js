@@ -18,11 +18,12 @@ function userSignin(data, accountType) {
             .then((res) => res.data)
             .then((user) => {
                 dispatch(userSigninSuccess(user));
+
                 return user;
             })
             .catch((error) => {
                 console.log(error);
-                
+
                 dispatch(userSigninError(error.message));
             });
     };

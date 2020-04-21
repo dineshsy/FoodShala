@@ -6,10 +6,10 @@ import {
 
 import axios from 'axios'
 
-function fetchProducts() {
+function fetchProducts(id) {
     return (dispatch) => {
         dispatch(fetchProductsPending());
-        axios.get("http://localhost:4000/menu/")
+        axios.get(`http://localhost:4000/menu/${id}`)
             .then((res) => res.data)
             .then((products) => {
                 dispatch(fetchProductsSuccess(products));

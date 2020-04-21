@@ -1,0 +1,50 @@
+.Card {
+    width: 25rem;
+    height: 100%;
+    background-color: rgb(149, 195, 255);
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.Card:hover {
+    transform: scale(1.1);
+}
+
+.Header {
+    width: 100%;
+    height: 50%;
+}
+
+.Header img {
+    border-radius: .8rem;
+    width: 100%;
+    height: 100%;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: scroll;
+}
+
+.Title {
+    display: block;
+    font-size: 3rem;
+    text-align: center;
+    text-transform: capitalize;
+    letter-spacing: 0.5rem;
+    font-weight: 500;
+    color: #044999;
+}
+
+.Cusines {
+    display: block;
+    padding: 0 0 1rem 0;
+}
+
+.Cusines h5 {
+    padding: 1rem 0;
+    text-decoration: none;
+    color: #044999;
+}
