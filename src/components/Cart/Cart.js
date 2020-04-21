@@ -18,7 +18,6 @@ import RestaurantMenuItem from "../RestaurantMenu/RestaurantMenuItem/RestaurantM
 
 import classes from "./Cart.module.css";
 import Button from "../UI/Button/Button";
-import chekout from "../../bloc/checkout";
 import Modal from "../UI/Modal/Modal";
 
 class Cart extends Component {

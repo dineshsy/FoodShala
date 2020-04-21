@@ -45,7 +45,8 @@ class RestaurantMenu extends Component {
                         quantity: this.props.cart[product.id]
                             ? this.props.cart[product.id].quantity
                             : 0,
-                        restaurantId: product.restaurantId
+                        restaurantId: product.restaurantId,
+                        mealType: product.mealType
                     })
             );
 
@@ -77,9 +78,9 @@ class RestaurantMenu extends Component {
     render() {
         if (this.props.pending) {
             return (
-                <div style={{ margin: "auto" }}>
-                    <Spinner />
-                </div>
+                <h1 style={{ margin: "auto" }}>
+                    Please wait while we fetch the menu
+                </h1>
             );
         }
 
@@ -113,6 +114,7 @@ class RestaurantMenu extends Component {
             productItems.push(
                 <RestaurantMenuItem
                     key={product.id}
+                    noEdit = {this.props.noEdit}
                     removeItemHandler={() => this.removeItemHandler(product.id)}
                     addItemHandler={() => this.addItemHandler(product.id)}
                     product={product}
@@ -126,7 +128,7 @@ class RestaurantMenu extends Component {
 
         return (
             <div className={classes.RestaurantMenu}>
-                <h2>{restaurant.name}</h2>
+                <h2>Menu for {" "}{restaurant.name}</h2>
                 <div className={classes.Header}>
                     {restaurant.img ? (
                         <img src={restaurant.img} alt="" />

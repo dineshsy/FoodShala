@@ -1,0 +1,38 @@
+.Card {
+    display: flex;
+    width: 30rem;
+    flex-flow: column;
+    justify-content: space-between;
+    height: 100%;
+    background-color: rgb(149, 195, 255);
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+    display: inline-block;
+    transition: transform 0.2s ease-in-out;
+}
+
+.Products {
+    display: flex;
+    flex-flow: column;
+    padding: 3rem 0;
+    justify-content: space-evenly;
+}
+
+.Product {
+    width: 100%;
+    display: flex;
+    padding: 1rem 0;
+    text-transform: capitalize;
+    justify-content: space-between;
+}
+
+.Footer {
+    display: flex;
+    padding: 3rem 0;
+    text-transform: capitalize;
+    justify-content: space-between;
+}
+
+.Status {
+    display: grid;
+}

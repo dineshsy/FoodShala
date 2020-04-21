@@ -18,11 +18,14 @@ export const CUSTOMER_SIGNUP_ERROR = "CUSTOMER_SIGNUP_ERROR";
 export const FETCH_CLIENT_PENDING = "FETCH_CLIENT_PENDING";
 export const FETCH_CLIENT_SUCCESS = "FETCH_CLIENT_SUCCESS";
 export const FETCH_CLIENT_ERROR = "FETCH_CLIENT_ERROR";
+// fetch all restaurants
+export const FETCH_ORDERS_PENDING = "FETCH_ORDERS_PENDING";
+export const FETCH_ORDERS_SUCCESS = "FETCH_ORDERS_SUCCESS";
+export const FETCH_ORDERS_ERROR = "FETCH_ORDERS_ERROR";
 //checkout process
 export const CHECKOUT_PENDING = "CHECKOUT_PENDING";
 export const CHECKOUT_SUCCESS = "CHECKOUT_SUCCESS";
 export const CHECKOUT_ERROR = "CHECKOUT_ERROR";
-
 // add items to cart
 export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART"
 // clear items from cart
@@ -63,7 +66,27 @@ export function fetchClientsSuccess(clients) {
 
 export function fetchClientsError(error) {
     return {
-        type: FETCH_PRODUCTS_ERROR,
+        type: FETCH_CLIENT_ERROR,
+        error: error
+    }
+}
+
+export function fetchOrdersPending() {
+    return {
+        type: FETCH_ORDERS_PENDING
+    }
+}
+
+export function fetchOrdersSuccess(orders) {
+    return {
+        type: FETCH_ORDERS_SUCCESS,
+        orders
+    }
+}
+
+export function fetchOrdersError(error) {
+    return {
+        type: FETCH_ORDERS_ERROR,
         error: error
     }
 }
@@ -156,4 +179,3 @@ export const clearCart = () => {
         type: CLEAR_CART,
     }
 };
-

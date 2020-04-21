@@ -18,7 +18,10 @@ import {
     CHECKOUT_ERROR,
     CHECKOUT_PENDING,
     CHECKOUT_SUCCESS,
-    CLEAR_CART
+    CLEAR_CART,
+    FETCH_ORDERS_ERROR,
+    FETCH_ORDERS_PENDING,
+    FETCH_ORDERS_SUCCESS
 } from "./action";
 
 const initialState = {
@@ -30,6 +33,7 @@ const initialState = {
     clients: [],
     cart: {},
     checkout: false,
+    orders: []
 };
 
 export function productsReducer(state = initialState, action) {
@@ -131,6 +135,25 @@ export function productsReducer(state = initialState, action) {
                 pending: false,
                 error: action.error,
             };
+        case FETCH_ORDERS_PENDING:
+            return {
+                ...state,
+                error: null,
+                pending: true,
+            };
+        case FETCH_ORDERS_SUCCESS:
+            return {
+                ...state,
+                pending: false,
+                error: null,
+                orders: action.orders,
+            };
+        case FETCH_ORDERS_ERROR:
+            return {
+                ...state,
+                pending: false,
+                error: action.error,
+            };
         case CHECKOUT_PENDING:
             console.log("pending")
             return {
@@ -196,6 +219,10 @@ export const getClientSuccess = (state) => state.auth;
 export const getCustomerPending = (state) => state.pending;
 export const getCustomerError = (state) => state.error;
 export const getCustomerSuccess = (state) => state.auth;
+
+export const getOrdersPending = (state) => state.pending;
+export const getOrdersError = (state) => state.error;
+export const getOrdersSuccess = (state) => state.orders;
 
 export const checkoutPending = (state) => state.pending;
 export const checkoutError = (state) => state.error;
