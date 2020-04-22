@@ -5,6 +5,7 @@ import classes from "./SignInForm.module.css";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import userSigninAction from "../../bloc/auth/SignIn";
+import fetchClientsAction from '../../bloc/fetchClients'
 import { getUser, getUserError, getUserPending } from "../../store/reducer";
 
 import { withRouter } from "react-router-dom";
@@ -130,6 +131,7 @@ class SignInForm extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.user !== this.props.user) {
             this.props.cancel();
+            this.props.fetchClients();
             this.props.history.replace("/");
         }
         if (
@@ -141,6 +143,7 @@ class SignInForm extends Component {
             const updatedPrimaryDetails = {
                 ...this.state.primaryDetails,
             };
+            this.props.fetchClients()
             updatedPrimaryDetails.password.value = "";
             updatedPrimaryDetails.username.value = "";
             this.setState({
@@ -207,6 +210,7 @@ const mapDispatchToProps = (dispatch) =>
     bindActionCreators(
         {
             userSignin: userSigninAction,
+            fetchClients: fetchClientsAction
         },
         dispatch
     );
