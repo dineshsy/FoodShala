@@ -31,12 +31,6 @@ class Navbar extends Component {
                     </a>
                 </div>
                 <div className={classes["Item"]}>
-                    <NavigationItem
-                        exact
-                        link="/support"
-                        img={<FontAwesomeIcon icon={faHandsHelping} />}
-                        name="Help"
-                    />
                     {!this.props.user ? (
                         <div
                             className={classes.SignIn}

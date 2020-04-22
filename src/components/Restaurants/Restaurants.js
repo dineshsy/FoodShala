@@ -23,7 +23,7 @@ class Restaurants extends Component {
     render() {
 
         if(this.props.pending) {
-            return <h1>Please while we fetch Restaurants</h1>
+            return <h1>Please wait while we fetch Restaurants..</h1>
         }
 
         if(this.props.error) {
