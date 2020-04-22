@@ -2,6 +2,22 @@
         FoodShala is food ordering Web Application, which mainly targets foodies and restaurants arround the world.
 ## [Link to the App](https://foodshala.netlify.com)
 
+## Steps to run locally
+
+## Step-1:
+
+```
+npm install
+```
+
+### Step-2:
+
+```
+npm start
+```
+
+### Please visit localhost:4000
+
 ## Implementations:
 
 ### 1. Users:
